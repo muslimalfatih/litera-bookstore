@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-book-primary;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .book-card {
+    @apply bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group;
+  }
+
+  .btn-primary {
+    @apply bg-book-accent text-white px-6 py-3 rounded-md font-medium hover:bg-book-accent/90 transition-all duration-200;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+  }
+}

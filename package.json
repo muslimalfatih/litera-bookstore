@@ -1,0 +1,21 @@
+{
+  "name": "litera-bookstore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tailwind:build": "tailwindcss -i ./assets/tailwind.css -o ./assets/application.css --minify",
+    "tailwind:watch": "tailwindcss -i ./assets/tailwind.css -o ./assets/application.css --watch",
+    "dev": "npm run tailwind:watch & shopify theme dev --store=litera-3643.myshopify.com",
+    "deploy": "npm run tailwind:build && shopify theme push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
+  }
+}
