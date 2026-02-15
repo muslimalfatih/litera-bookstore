@@ -5,13 +5,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
-          }
-        },
         "footer-1": {
           "type": "link_list",
           "settings": {
@@ -23,12 +16,11 @@
           "type": "text",
           "settings": {
             "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "subtext": "<p>Whether you're building a home library, searching for the perfect gift, or simply craving your next escape, we're honored to be part of your reading journey.</p>"
           }
         }
       },
       "block_order": [
-        "footer-0",
         "footer-1",
         "footer-2"
       ],
@@ -36,6 +28,7 @@
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
         "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
