@@ -1,0 +1,57 @@
+<div class="relative h-[600px] bg-cover bg-center" 
+     style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('{{ section.settings.image | img_url: '1920x' }}');">
+  <div class="section-container h-full flex flex-col justify-center items-center text-center text-white">
+    <h1 class="text-5xl md:text-7xl font-display font-bold mb-4 max-w-3xl">
+      {{ section.settings.heading }}
+    </h1>
+    <p class="text-xl md:text-2xl mb-8 max-w-2xl opacity-90">
+      {{ section.settings.subheading }}
+    </p>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link }}" class="btn-primary text-lg px-8 py-4">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover Your Next Great Read"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Curated collection of bestsellers, new releases, and timeless classics"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

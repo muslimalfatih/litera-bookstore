@@ -1,0 +1,110 @@
+<div class="section-container">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl font-display font-bold mb-4">{{ section.settings.heading }}</h2>
+    <p class="text-book-muted text-lg max-w-2xl mx-auto">{{ section.settings.subheading }}</p>
+  </div>
+  
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    {% for product in section.settings.collection.products limit: section.settings.products_to_show %}
+      <div class="book-card">
+        <a href="{{ product.url }}" class="block">
+          <div class="relative aspect-[2/3] overflow-hidden bg-gray-100">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '400x' }}" 
+                   alt="{{ product.title }}"
+                   loading="lazy"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            {% endif %}
+            
+            {% if product.tags contains 'bestseller' %}
+              <span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">
+                BESTSELLER
+              </span>
+            {% elsif product.tags contains 'new-release' %}
+              <span class="absolute top-2 left-2 bg-book-accent text-white text-xs font-bold px-2 py-1 rounded">
+                NEW
+              </span>
+            {% endif %}
+          </div>
+          
+          <div class="p-4">
+            <h3 class="font-semibold text-sm mb-1 line-clamp-2 group-hover:text-book-accent transition-colors">
+              {{ product.title }}
+            </h3>
+            <p class="text-xs text-book-muted mb-2">
+              {{ product.vendor }}
+            </p>
+            <div class="flex items-baseline gap-2">
+              <span class="text-lg font-bold text-book-accent">
+                {{ product.price | money_without_trailing_zeros }}
+              </span>
+              {% if product.compare_at_price > product.price %}
+                <span class="text-xs text-book-muted line-through">
+                  {{ product.compare_at_price | money_without_trailing_zeros }}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% if section.settings.button_text != blank %}
+    <div class="text-center mt-10">
+      <a href="{{ section.settings.button_link }}" class="btn-primary">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Featured Books",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Books"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Handpicked selections from our collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Products to show",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View All Books"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Books"
+    }
+  ]
+}
+{% endschema %}
