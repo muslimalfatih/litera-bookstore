@@ -731,27 +731,6 @@
         assign seo_media = product.featured_media
       endif
     -%}
-    {%- comment -%} Book metadata display {%- endcomment -%}
-    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
-      <h3 class="font-semibold mb-3 text-sm uppercase tracking-wide">Book Details</h3>
-      <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-        <dt class="text-book-muted">Author:</dt>
-        <dd class="font-medium">{{ product.vendor }}</dd>
-        
-        {% if product.metafields.custom.isbn %}
-          <dt class="text-book-muted">ISBN:</dt>
-          <dd class="font-medium">{{ product.metafields.custom.isbn }}</dd>
-        {% endif %}
-        
-        <dt class="text-book-muted">Format:</dt>
-        <dd class="font-medium">{{ product.variants.first.title }}</dd>
-        
-        <dt class="text-book-muted">Availability:</dt>
-        <dd class="font-medium {% if product.available %}text-green-600{% else %}text-red-600{% endif %}">
-          {% if product.available %}In Stock{% else %}Out of Stock{% endif %}
-        </dd>
-      </dl>
-    </div>
 
     <script type="application/ld+json">
       {{ product | structured_data }}

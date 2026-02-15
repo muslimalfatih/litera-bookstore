@@ -38,46 +38,7 @@
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   
-  {%- paginate collection.products by section.settings.products_per_page -%}    
-    {%- comment -%} Custom Collection Header with Tailwind {%- endcomment -%}
-    <div class="section-container">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-        <div>
-          <h1 class="text-4xl font-display font-bold">{{ collection.title }}</h1>
-          <p class="text-book-muted mt-2">
-            {%- if collection.products_count == 1 -%}
-              {{ collection.products_count }} book
-            {%- else -%}
-              {{ collection.products_count }} books
-            {%- endif -%}
-          </p>
-        </div>
-        
-        {%- if section.settings.enable_sorting -%}
-          <div class="flex gap-3">
-            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-            <select 
-              name="sort_by" 
-              class="border border-gray-300 rounded-md px-4 py-2 text-sm focus:ring-2 focus:ring-book-accent focus:border-book-accent"
-              onchange="window.location.href = this.value"
-            >
-              {%- for option in collection.sort_options -%}
-                {%- assign sort_url = request.path | append: '?' | append: 'sort_by=' | append: option.value -%}
-                {%- if request.page_param -%}
-                  {%- assign sort_url = sort_url | append: '&page=' | append: request.page_param -%}
-                {%- endif -%}
-                <option 
-                  value="{{ sort_url }}"
-                  {% if option.value == sort_by %}selected="selected"{% endif %}
-                >
-                  {{ option.name | escape }}
-                </option>
-              {%- endfor -%}
-            </select>
-          </div>
-        {%- endif -%}
-      </div>
-    </div>
+  {%- paginate collection.products by section.settings.products_per_page -%}
     
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
