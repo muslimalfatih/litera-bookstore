@@ -6,7 +6,7 @@
   "scripts": {
     "tailwind:build": "tailwindcss -i ./assets/tailwind.css -o ./assets/application.css --minify",
     "tailwind:watch": "tailwindcss -i ./assets/tailwind.css -o ./assets/application.css --watch",
-    "dev": "npm run tailwind:watch & shopify theme dev --store=litera-3643.myshopify.com",
+    "dev": "npm run tailwind:watch & shopify theme dev --store=litera-bookstore.myshopify.com",
     "deploy": "npm run tailwind:build && shopify theme push"
   },
   "keywords": [],

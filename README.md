@@ -2,7 +2,7 @@
 
 A conversion-optimized Shopify theme built for independent bookstores and literary retailers. Litera combines simple design with performance-first architecture to create an exceptional book shopping experience.
 
-[Live Demo](https://litera-3643.myshopify.com/) | [Documentation](#installation)
+[Live Demo](https://litera-bookstore.myshopify.com/) | [Documentation](#installation)
 
 ## Overview
 
